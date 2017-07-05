@@ -4,8 +4,7 @@ import '../App.css';
 import WorldPopulation from './WorldPopulation';
 import USPopulation from './USPopulation';
 import CheckRank from './CheckRank';
-
-
+import ShortCountryPopulation from './ShortCountryPopulation';
 
 class App extends React.Component {
   
@@ -13,8 +12,6 @@ class App extends React.Component {
  constructor(){
    super();
     this.state = {
-      rank: '',
-      user: ''
     }
   }
   */
@@ -34,6 +31,9 @@ class App extends React.Component {
         <br/>
         <USPopulation country="United States" />
         <br/>
+        <ShortCountryPopulation />
+         <br/>
+         <br/>
         <CheckRank />
       </div>
     );
