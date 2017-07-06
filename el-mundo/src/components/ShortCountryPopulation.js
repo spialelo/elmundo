@@ -56,58 +56,10 @@ submitShortFetch(event){
                this.setState({short: shortArray});
                this.setState({shortCount: shortArray.length});
         })
-        .then(()=>{
-            const shortList = this.state.short;
-             //http://api.population.io:80/1.0/population/2017/Brazil/18/
-             const infoArray = [];
-             
-             shortList.forEach((sCountry)=>{
-                 let url = `http://api.population.io:80/1.0/population/2017/${sCountry}/18`;
-                 fetch(url)
-                .then((response) => response.json())
-                .then((json) => 
-                    {
-                        infoArray.push(json);
-                       
-                   });
-                 });
-                    this.setState({finalInfo: infoArray}, function(){
-                       return this.state.finalInfo;
-             })
-        
-        })
         .catch((error) => {console.log(error)});
 
     }
     
-
- getRank(key){
-        //make copy of state
-        const finalInfo= [...this.state.finalInfo];
-        //get data
-            const shortList = this.state.short;
-             //http://api.population.io:80/1.0/population/2017/Brazil/18/
-             const infoArray = [];
-            
-                 let url = `http://api.population.io:80/1.0/population/2017/${shortList[key]}/18`;
-                 fetch(url)
-                .then((response) => response.json())
-                .then((json) => 
-                    {
-                        infoArray[key].push(json);
-                       
-                   });
-               
-                 
-                 //update state
-                    this.setState({finalInfo: infoArray}, function(){
-                       return this.state.finalInfo;
-             })
-     
-   
-        
-    }
-
 
 
     
@@ -123,7 +75,7 @@ submitShortFetch(event){
                    <ul>
                      {Object
                                 .keys(this.state.short)
-                                .map(key => <ShortCountry key={key} index={key} country={this.state.short[key]} getRank = {this.getRank}/>)
+                                .map(key => <ShortCountry key={key} index={key} country={this.state.short[key]} />)
                          
                      }
                         </ul>       
