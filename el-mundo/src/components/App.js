@@ -8,7 +8,13 @@ import ShortCountryPopulation from './ShortCountryPopulation';
 
 class App extends React.Component {
   
-
+  // constructor(){
+  //   super();
+  //   this.totalPop =this.totalPop.bind(this);
+  //   this.state = {
+  //     total:''
+  //   }
+  // }
 
   
   render() {

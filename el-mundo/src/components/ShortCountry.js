@@ -3,58 +3,70 @@ import React from 'react';
 
 class ShortCountry extends React.Component {
     
-    
     constructor(){
-    super();
-    this.state = {
-       data: {}
+        super();
+        this.state = {
+            sCountry: '',
+            totPop: '',
+            fPop: '',
+            mPop:'',
+            finalInfo:[],
+            completeTotal: '',
+            index: ''
+        }
     }
-  }
+    
+    
+    
+    getRank(event){
+            event.preventDefault()
+               let infoArray = [];
+                let sum = 0;
+                let country = this.props.country;
+                let index = this.props.index;
   
-    
-    
-     getRank(event){
-         event.preventDefault();
-        //make copy of state
-        //const finalInfo= [...this.state.finalInfo];
-        //get data
-            //const shortList = this.state.short;
-             //http://api.population.io:80/1.0/population/2017/Brazil/18/
-             //const infoArray = [];
-            
-                /* let url = `http://api.population.io:80/1.0/population/2017/${shortList[this.props.index]}/18`;
-                 fetch(url)
-                .then((response) => response.json())
-                .then((json) => 
-                    {
-                        infoArray[this.props.index].push(json);
-                       
+                   let url =  `http://api.population.io:80/1.0/population/2017/${country}/18`;
+                   fetch(url)
+                    .then((response) => response.json())
+                    .then((json) => 
+                        {
+                            console.log('json received');
+                            infoArray.push(json[0]); 
+                            console.log(infoArray);
+                            this.setState({finalInfo: infoArray},()=>this.state.finalInfo);
+                            //console.log(this.state.finalInfo); - has the complete array
+                          
+                           
+                   })
+                   .then(()=> {
+                       for(let i=0; i <infoArray.length; i++){
+                           sum+=infoArray[i].total;
+                            console.log(`Country: ${infoArray[i].country}-Total population: ${infoArray[i].total}-Male Population: ${infoArray[i].males}-Female Population: ${infoArray[i].females}`);
+                            this.setState({sCountry:infoArray[i].country, totPop:infoArray[i].total, mPop:infoArray[i].males, fPop:infoArray[i].females});
+                   }
                    });
-               
-                 
-                 //update state
-                    this.setState({finalInfo: infoArray}, function(){
-                       return this.state.finalInfo;
-             })*/
-             
-             
-             console.log('clicked');
-     
-   
-        
-    }
+                   
+                   
 
+               this.setState({completeTotal: sum},()=>this.state.completeTotal);
+               this.setState({index},()=>this.state.index);
+               
+               //console.log(this.state.finalInfo);
+               
+    }
     
     
     render(){
-        let country = this.props.country;
-        let index = this.props.index;
-
-        
+      
         return(
-            <li className="country"  onClick={(e)=>this.getRank(e)}>
+            <li className="country"  onClick={(e)=>this.getRank(e)} style={{listStyle: 'none', border: '2px solid #333'}}>
          
-            {country} is at index: {index}
+             <div className="country-rank-results active">
+                            <p>Country: {this.state.sCountry}</p>
+                            <p>Total: {this.state.totPop}</p>
+                            <p>Male population: {this.state.mPop}</p>
+                            <p>Female population: {this.state.fPop}</p>
+                        </div>
             </li>
             
             )

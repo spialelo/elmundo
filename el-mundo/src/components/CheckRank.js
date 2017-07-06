@@ -61,7 +61,7 @@ class CheckRank extends React.Component{
         const birthdate = this.state.birthdate;
         const gender = this.state.gender;
         
-        this.setState({rank:'', birthdate: '', gender: ''})
+        this.setState({rank:'', birthdate: '', gender: ''});
         this.rankForm.reset();
          console.log('Fields reset');
     }
