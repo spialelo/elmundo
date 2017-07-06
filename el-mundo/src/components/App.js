@@ -8,13 +8,34 @@ import ShortCountryPopulation from './ShortCountryPopulation';
 
 class App extends React.Component {
   
- /* 
- constructor(){
+
+ /*constructor(){
    super();
+    this.getRank =this.getRank.bind(this);
     this.state = {
+        countries: {}
     }
-  }
-  */
+  }*/
+
+
+
+/*getRank(currentCountry){
+    
+    
+    //http://api.population.io:80/1.0/population/2017/Brazil/18/
+    
+    fetch(url)
+        .then((response) => response.json())
+        .then((json) => 
+       {
+           this.setState({data: json.total_population}, function(){
+               return this.state.data.population;
+           });
+           
+       });
+    
+    
+}*/
 
   
   render() {
