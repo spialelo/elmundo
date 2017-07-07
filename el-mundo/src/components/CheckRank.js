@@ -7,6 +7,7 @@ class CheckRank extends React.Component{
 
     constructor(){
         super();
+        this.handleChange = this.handleChange.bind(this);
         this.state = {
             birthdate: '',
             gender: '',
@@ -14,6 +15,15 @@ class CheckRank extends React.Component{
         };
       }
       
+  
+  
+  
+     handleChange(e){
+        const gender = this.props.gender;
+        const updateGender = this.gender;
+       
+       this.setState({gender:updateGender});
+     }
   
     
     submitRank(event){
@@ -33,11 +43,11 @@ class CheckRank extends React.Component{
         
         const url = 'http://api.population.io:80/1.0/wp-rank/' + finaldateFormat + '/' +formatGender + '/World/today/';
         //http://api.population.io:80/1.0/wp-rank/1986-04-26/female/World/today/
-    
+     const proxyURL = 'https://cors-anywhere.herokuapp.com/';
           
         console.log(url);
     
-            fetch(url)
+            fetch(proxyURL + url)
                 .then((response) => response.json())
                 .then((json) => 
                {
@@ -80,7 +90,7 @@ class CheckRank extends React.Component{
                     
                      <form ref={(input) => this.rankForm = input} className="rank-criteria">
                          <input ref={(input) => this.birthdate = input} type="text" placeholder="Birthdate (Format: MM-DD-YYYY)" />
-                         <select ref={(input) => this.gender = input}>
+                         <select ref={(input) => this.gender = input} onChange={(e) => this.handleChange(e)}>
                          <option value="Female">Female</option>
                          <option value="Male">Male</option>
                          </select>

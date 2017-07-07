@@ -18,8 +18,10 @@ constructor(){
     const countryName = this.props.country;
     const countryFormat = countryName.replace(/ /g,'%20');
     const url = 'http://api.population.io:80/1.0/population/' + countryFormat + '/' + todayFormat + '/';
+    const proxyURL = 'https://cors-anywhere.herokuapp.com/';
     
-    fetch(url)
+    
+    fetch(proxyURL+ url)
         .then((response) => response.json())
         .then((json) => 
        {

@@ -32,7 +32,9 @@ class ShortCountry extends React.Component {
                 let index = this.props.index;
   
                    let url =  `http://api.population.io:80/1.0/population/2017/${country}/18`;
-                   fetch(url)
+                    const proxyURL = 'https://cors-anywhere.herokuapp.com/';
+                    
+                   fetch(proxyURL+ url)
                     .then((response) => response.json())
                     .then((json) => 
                         {
