@@ -14,7 +14,7 @@ const Root = () => {
         {/*Match cannot be direct child of BrowserRouter, therefore wrapped in div*/}
           <div>
             <Match exactly pattern="/" component={App}/>{/*When on homepage*/}
-            <Match pattern="/population/results" component={WorldPopulation}/>{/*Population results*/}
+            {/*<Match pattern="/population/results" component={WorldPopulation}/>*/}
             <Miss component={NotFound}/>
           </div>
         </BrowserRouter>

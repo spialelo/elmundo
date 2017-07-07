@@ -18,14 +18,13 @@ class WorldPopulation extends React.Component{
     const countryName = this.props.country;
     const countryFormat = countryName.replace(/ /g,'%20');
     const url = 'http://api.population.io:80/1.0/population/' + countryFormat + '/' + todayFormat + '/';
+    const proxyURL = 'https://cors-anywhere.herokuapp.com/';
     
-    fetch(url)
+    fetch(proxyURL + url)
         .then((response) => response.json())
         .then((json) => 
        {
-           this.setState({data: json.total_population}, function(){
-             return this.state.data.population;
-           });
+           this.setState({data: json.total_population});
            
        });
 }

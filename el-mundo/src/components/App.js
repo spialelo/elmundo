@@ -31,7 +31,7 @@ class App extends React.Component {
         <br/>
         <USPopulation country="United States" />
         <br/>
-        <ShortCountryPopulation getRank={this.getRank}/>
+        <ShortCountryPopulation/>
          <br/>
          <br/>
         <CheckRank />

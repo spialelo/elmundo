@@ -19,7 +19,7 @@ class CheckRank extends React.Component{
     submitRank(event){
        
         event.preventDefault();
-        console.log('user input rank criteria');
+        //console.log('user input rank criteria');
         const rank = this.state.rank;
         const birthdate = this.state.birthdate;
         const gender = this.state.gender;
@@ -33,11 +33,11 @@ class CheckRank extends React.Component{
         
         const url = 'http://api.population.io:80/1.0/wp-rank/' + finaldateFormat + '/' +formatGender + '/World/today/';
         //http://api.population.io:80/1.0/wp-rank/1986-04-26/female/World/today/
-    
+        const proxyURL = 'https://cors-anywhere.herokuapp.com/';
           
         console.log(url);
     
-            fetch(url)
+            fetch(proxyURL+url)
                 .then((response) => response.json())
                 .then((json) => 
                {

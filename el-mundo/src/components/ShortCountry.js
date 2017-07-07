@@ -32,14 +32,15 @@ class ShortCountry extends React.Component {
                 let index = this.props.index;
   
                    let url =  `http://api.population.io:80/1.0/population/2017/${country}/18`;
-                   fetch(url)
+                   const proxyURL = 'https://cors-anywhere.herokuapp.com/';
+                   fetch(proxyURL+url)
                     .then((response) => response.json())
                     .then((json) => 
                         {
                             console.log('json received');
                             infoArray.push(json[0]); 
                             console.log(infoArray);
-                            this.setState({finalInfo: infoArray},()=>this.state.finalInfo);
+                            this.setState({finalInfo: infoArray});
                             //console.log(this.state.finalInfo); - has the complete array
                           
                            
@@ -54,8 +55,8 @@ class ShortCountry extends React.Component {
                    
                    
 
-               this.setState({finTotal: sum},()=>this.state.finTotal);
-               this.setState({index},()=>this.state.index);
+               this.setState({finTotal: sum});
+               this.setState({index});
                
                //console.log(this.state.finalInfo);
                
