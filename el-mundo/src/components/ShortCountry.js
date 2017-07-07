@@ -5,16 +5,22 @@ class ShortCountry extends React.Component {
     
     constructor(){
         super();
+        //this.getRank = this.getRank.bind(this);
         this.state = {
             sCountry: '',
             totPop: '',
             fPop: '',
             mPop:'',
             finalInfo:[],
-            completeTotal: '',
+            finTotal: '',
             index: ''
         }
     }
+    
+    
+//       componentDidMount() {
+//         this.getRank();
+//   }
     
     
     
@@ -48,7 +54,7 @@ class ShortCountry extends React.Component {
                    
                    
 
-               this.setState({completeTotal: sum},()=>this.state.completeTotal);
+               this.setState({finTotal: sum},()=>this.state.finTotal);
                this.setState({index},()=>this.state.index);
                
                //console.log(this.state.finalInfo);
@@ -59,8 +65,9 @@ class ShortCountry extends React.Component {
     render(){
       
         return(
-            <li className="country"  onClick={(e)=>this.getRank(e)} style={{listStyle: 'none', border: '2px solid #333'}}>
-         
+          
+            <li className="country" onClick={(e) => this.getRank(e)} style={{listStyle: 'none', border: '2px solid #333'}}>
+
              <div className="country-rank-results active">
                             <p>Country: {this.state.sCountry}</p>
                             <p>Total: {this.state.totPop}</p>

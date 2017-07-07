@@ -22,7 +22,7 @@ class App extends React.Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React = Test </h2>
+          <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
         World Population Application
@@ -31,7 +31,7 @@ class App extends React.Component {
         <br/>
         <USPopulation country="United States" />
         <br/>
-        <ShortCountryPopulation />
+        <ShortCountryPopulation getRank={this.getRank}/>
          <br/>
          <br/>
         <CheckRank />
